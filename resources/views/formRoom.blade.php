@@ -5,72 +5,122 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản lý phòng</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
         .container {
-            width: 900px;
-            margin: 20px auto;
-            border: 2px solid navy;
+            max-width: 800px;
+            margin: 0 auto;
             padding: 20px;
-            border-radius: 10px;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+
         h1 {
-            margin-bottom: 15px;
             text-align: center;
+            color: #333;
+            margin-bottom: 20px;
         }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background-color: #ddd;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
         .btn-group {
             display: flex;
             gap: 10px;
-            margin-bottom: 15px;
+            margin-top: 20px;
+        }
 
-        }
-        .btn {
-            padding: 10px 15px;
+        button {
+            padding: 12px 24px;
             border: none;
+            border-radius: 4px;
             cursor: pointer;
-            font-weight: bold;
-            border-radius: 5px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            flex: 1;
         }
-        .btn.display {
-            background-color: red;
+
+        button[type="submit"] {
+            background-color: #007bff;
             color: white;
         }
-        .btn.add {
-            background-color: orange;
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        a > button {
+            background-color: #28a745;
             color: white;
-        }
-        .form-group {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-        input {
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            text-decoration: none;
+            display: block;
             width: 100%;
         }
+
+        a > button:hover {
+            background-color: #218838;
+        }
+
         .upload-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid orange;
-            padding: 10px;
-            border-radius: 5px;
-            color: orange;
-            font-weight: bold;
             cursor: pointer;
         }
 
-        hr{
-            margin-bottom: 20px;
-            color:orange;
-            font-weight: bold;
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .form-group {
+                padding: 15px;
+            }
+
+            .btn-group {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 24px;
+            }
+
+            input[type="text"],
+            input[type="number"] {
+                font-size: 16px;
+            }
         }
     </style>
 </head>
