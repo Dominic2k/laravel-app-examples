@@ -1,38 +1,41 @@
 <?php
-
-
 namespace App\Http\Controllers;
-use App\Http\Requests\RoomRequest;
+
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
-class RoomController
+class RoomController extends Controller
 {
-    function show_form(){
-        // return view
+    public function show_form(){
         return view('formRoom');
     }
-    function show_hotel(){
-        // return view
+
+    public function show_hotel(){
         $rooms = Session::get('rooms', []);
-
-
-        return view('show_hotel')->with('rooms', $rooms);
+        return view('show_hotel', compact('rooms'));
     }
 
-    function handleAddRoom(RoomRequest $request){
+    public function handleAddRoom(Request $request){
         $rooms = Session::get('rooms', []);
 
-        $newroom= [
-            'name' => $request->input('name'),
+        $newroom = [
+            'name'  => $request->input('name'),
             'price' => $request->input('price'),
-            'des' => $request->input('des'),
+            'des'   => $request->input('des'),
             'image' => $request->input('image'),
         ];
 
-        $rooms []= $newroom;
-
+        $rooms[] = $newroom;
         Session::put('rooms', $rooms);
 
-        return view('formRoom');
+        return redirect()->back();
     }
+
+    public function clearSession(){
+        Session::forget('rooms');
+
+        return redirect()->back()->with('success', 'Session đã được xóa!');
+    }
+
 }
+

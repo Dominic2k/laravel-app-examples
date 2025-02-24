@@ -5,146 +5,128 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản lý phòng</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
         .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f5f5f5;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            margin: auto;
         }
 
-        h1 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 20px;
+        h2 {
+            font-size: 24px;
         }
 
-        hr {
-            border: 0;
-            height: 1px;
-            background-color: #ddd;
-            margin-bottom: 30px;
+        .buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .btn-red {
+            background-color: red;
+            color: white;
+            border: 2px solid #1f3c68;
+        }
+
+        .btn-orange {
+            background-color: orange;
+            color: white;
+            border: 2px solid #a2c0e8;
+        }
+
+        .btn-orange i {
+            margin-left: 5px;
+        }
+
+        .form-container {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            padding: 15px;
+            border-top: 3px solid orange;
         }
 
         .form-group {
-            background-color: white;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        }
-
-        input[type="text"],
-        input[type="number"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
-            font-size: 14px;
-            transition: border-color 0.3s ease;
-        }
-
-        input[type="text"]:focus,
-        input[type="number"]:focus {
-            border-color: #007bff;
-            outline: none;
-        }
-
-        .btn-group {
             display: flex;
-            gap: 10px;
-            margin-top: 20px;
+            flex-direction: column;
+            width: 24%;
         }
 
-        button {
-            padding: 12px 24px;
-            border: none;
-            border-radius: 4px;
+        input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+
+        .btn-upload {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            border: 2px dashed orange;
+            background-color: transparent;
+            color: orange;
+            font-size: 16px;
             cursor: pointer;
-            font-size: 14px;
-            transition: all 0.3s ease;
-            flex: 1;
+            border-radius: 5px;
+            margin-top: 5px;
         }
 
-        button[type="submit"] {
-            background-color: #007bff;
-            color: white;
+        .btn-upload i {
+            margin-right: 5px;
         }
 
-        button[type="submit"]:hover {
-            background-color: #0056b3;
-        }
-
-        a > button {
-            background-color: #28a745;
-            color: white;
-            text-decoration: none;
-            display: block;
-            width: 100%;
-        }
-
-        a > button:hover {
-            background-color: #218838;
-        }
-
-        .upload-btn {
-            cursor: pointer;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .container {
-                padding: 15px;
-            }
-
-            .form-group {
-                padding: 15px;
-            }
-
-            .btn-group {
-                flex-direction: column;
-            }
-
-            button {
-                width: 100%;
-            }
-        }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 24px;
-            }
-
-            input[type="text"],
-            input[type="number"] {
-                font-size: 16px;
-            }
-        }
     </style>
 </head>
 <body>
-<div class="container">
-    <h1>Quản lý phòng</h1>
-
-    <hr>
-    <div class="form-group">
-        <form action="" method="post">
-            @csrf
-            <input type="text" placeholder="Tên phòng" name="name">
-            <input type="text" placeholder="Mô tả phòng" name="des">
-            <input type="number" placeholder="Giá phòng" name="price">
-            <input type="text" class="upload-btn" placeholder="Nhập link ảnh" name="image">
-            <div class="btn-group">
-                <a href="/laravel-app/public/room">
-                    <button type="button">Hiển thị</button>
-                </a><a href="{{ route('create') }}">
-                    <button type="submit">Thêm mới phòng</button>
-                </a>
-            </div>
-        </form>
+<form action="{{ route('create') }}" method="post">
+    @csrf
+    <h2>Quản lý phòng</h2>
+    <div class="buttons">
+        <button type="button" class="btn btn-red" id="btn-show">Hiển Thị</button>
+        <button type="submit" class="btn btn-orange" id="btn-submit">
+            Thêm mới phòng <i class="fa-solid fa-calendar-plus"></i>
+        </button>
     </div>
-</div>
+    <div class="form-container">
+        <div class="form-group">
+            <label for="ten-phong">Tên phòng</label>
+            <input type="text" id="ten-phong" placeholder="Tên phòng" name="name">
+        </div>
+        <div class="form-group">
+            <label for="mo-ta">Mô tả phòng</label>
+            <input type="text" id="mo-ta" placeholder="Mô tả phòng" name="des">
+        </div>
+        <div class="form-group">
+            <label for="gia">Giá</label>
+            <input type="text" id="gia" placeholder="Giá phòng" name="price">
+        </div>
+        <div class="form-group">
+            <label for="anh">Link ảnh</label>
+            <input type="text" id="anh" placeholder="Link ảnh" name="image">
+        </div>
+    </div>
+</form>
+<div> @include('block.error')</div>
+
+<script>
+    document.getElementById('btn-show').addEventListener('click', function (){
+        window.location.href = "{{ route('show_hotel') }}";
+    });
+</script>
+
 </body>
 </html>
