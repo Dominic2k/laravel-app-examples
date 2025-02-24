@@ -10,10 +10,6 @@
             margin: 20px;
         }
 
-        .container {
-            width: 80%;
-            margin: auto;
-        }
 
         h2 {
             font-size: 24px;
@@ -67,20 +63,6 @@
         input {
             padding: 10px;
             border: 1px solid #ccc;
-            border-radius: 5px;
-            margin-top: 5px;
-        }
-
-        .btn-upload {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 10px;
-            border: 2px dashed orange;
-            background-color: transparent;
-            color: orange;
-            font-size: 16px;
-            cursor: pointer;
             border-radius: 5px;
             margin-top: 5px;
         }
