@@ -11,7 +11,7 @@
     <h2>Danh sách sản phẩm</h2>
     <a href="{{ route('products.create') }}" class="btn btn-success mb-3">Thêm sản phẩm</a>
     @if(session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
+        <div class="alert alert-danger">{{ session('success') }}</div>
     @endif
     <table class="table table-bordered">
         <thead>

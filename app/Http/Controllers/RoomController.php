@@ -11,10 +11,6 @@ class RoomController extends Controller
         return view('formRoom');
     }
 
-    public function show_hotel(){
-        $rooms = Session::get('rooms', []);
-        return view('show_hotel', compact('rooms'));
-    }
 
     function handleAddRoom(RoomRequest $request){
         $rooms = Session::get('rooms', []);
@@ -30,6 +26,10 @@ class RoomController extends Controller
         Session::put('rooms', $rooms);
 
         return redirect()->route('form')->with('success', 'Thêm phòng thành công!');
+    }
+    public function show_hotel(){
+        $rooms = Session::get('rooms');
+        return view('show_hotel', compact('rooms'));
     }
 
 

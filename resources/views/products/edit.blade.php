@@ -6,7 +6,6 @@
             @csrf
             @method('PUT')
             <input type="text" name="name" value="{{ $product['name'] }}" required class="form-control mb-3">
-            <textarea name="description" class="form-control mb-3">{{ $product['avatar'] }}</textarea>
             <button type="submit" class="btn btn-primary">Cập nhật</button>
         </form>
     </div>
